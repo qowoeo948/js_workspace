@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrapper{
+            width: 700px;
+            height: 600px;      
+            margin:auto;
+            overflow: hidden;
+            border:5px solid black;
+        }
+        #roll{
+            width:150px;
+            height: 100%;
+            float: left;
+            overflow: scroll;
+        }
+        #roll img{
+            width: 120px;
+        }
+        #content{
+            width:550px;
+            height: 100%;
+            float: left;
+        }
+        #content img{
+            width: 450px;
+            padding:50px;
+        }
+    </style>    
+
+<script>
+  
+    window.addEventListener("load",function(){
+        createRoll();
+        createContent();
+    });
+
+    function createRoll(){
+        for(var i=1;i<=10;i++){
+            var  roll = document.getElementById("roll"); 
+            var rollImg = document.createElement("img");
+            rollImg.src="../images/travel/"+i+".jpg";
+            roll.appendChild(rollImg);
+            
+            rollImg.addEventListener("click",function(){
+                
+                console.log("지금 누른 이미지의 경로는 ",this.src);
+
+                contentImg.src = this.src;
+            });
+        }
+    }
+
+    var contentImg;
+    function createContent(){
+        var content = document.getElementById("content");
+        contentImg = document.createElement("img");
+        contentImg.src="../images/travel/1.jpg";
+        content.appendChild(contentImg);
+    }
+
+</script>
+
+</head>
+<body>
+    <div id="wrapper">
+        <div id="roll"></div>
+        <div id="content"></div>
+    </div>
+    
+</body>
+</html>
