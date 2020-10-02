@@ -1,0 +1,81 @@
+<script>
+
+/*
+    함수란?
+        재사용 가능성이 높은 코드 영역에 이름을 붙여놓은 단위
+
+*/
+
+    // function dan(){
+
+    // for(var j=1;j<=2;j++){
+    //     for(var i=1;i<=9;i++){
+    //     document.write("3*"+i+"="+3*i+"<br>");
+    //     }
+    // }
+
+    // }
+
+    // for(var i=1;i<=100;i++)
+    //     dan();
+
+
+//리턴값이 있는 경우
+// function test(){
+//     return 3; //함수내 return이 있을 경우 실행부는, 원래 실행했던 위치로 
+//                     //되돌아간다.
+//     document.write("함");
+
+// }
+// // var x = test();
+// // document.write(x);
+// alert(test());
+
+
+
+//문제6번
+// function myFunc(){
+//     alert("myFunc함수를 호출");
+//     return 3;
+// }
+// function testFunc(){
+//     var x=myFunc();
+//     alert(x);
+// }
+// testFunc();
+
+
+
+//연습문제
+//매개변수 있는 함수 :
+//함수 정의시, 그 내용을 확정짓지 말고,
+//외부의 요구사항에 대응할 수 있는 코트도 정의하는 방법..
+//매개변수 있는 함수: 외부에서 호출될때 넘겨받은 데이터를, 함수 내부에서
+//사용하기 떄문에, 이 데이터를 중간에서 넘겨받는 변수를 매개변수라 한다.
+//사용이유? 함수의 갯수를 줄일수있다.
+// function dan5(n){
+//     for(var i=1;i<=9;i++){
+//         document.write(n+"*"+i+"="+n*i+"<br>");
+//     }
+
+// }
+
+// dan5(7);
+
+
+//9번
+function myFunc(x,y){
+    var result;
+    result = x+y;
+    alert("계산결과는"+result);
+    return result;
+}
+
+myFunc(10);
+
+
+
+
+
+
+</script>

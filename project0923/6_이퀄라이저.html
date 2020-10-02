@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    #wrapper{
+        width: 700px;
+        height: 600px;
+        border:2px solid red;
+        margin:auto;
+        position: relative;
+    }
+
+</style>
+<script src="../jslib/lib.js"></script>
+<script>
+
+    var wrapper;
+    var targetH=20;  //BAR의 목표 높이
+    let a=0.1;
+
+    var color=new Array(5);
+    color[0]="red";
+    color[1]="purple";
+    color[2]="blue";
+    color[3]="orange";
+    color[4]="yellow";
+    color[5]="navy";
+    color[6]="gray";
+
+    var arr = new Array(7);
+    
+
+//막대만들기 생성
+function createBar(){
+
+        for(var i=0;i<=6;i++){
+
+        bar = document.createElement("div");
+        arr[i]=bar;
+        bar.style.position="absolute";
+        bar.style.left=(i*65)+"px";
+        bar.style.top=0+"px";
+        bar.style.width=65+"px";
+        bar.style.height=20+"px";
+        bar.style.borderRadius="4px";
+        bar.style.background="red";
+        bar.style.background=color[i];
+
+        wrapper.appendChild(bar);
+        }
+
+        bar.addEventListener("mouseover",function(){
+            
+           targetH= getRandom(500);
+
+        });
+        bar.addEventListener("mouseout",function(){
+           targetH=20;
+
+        });
+    }
+
+//막대크기 변경함수
+function move(){
+    for(var i=0;i<arr.length;i++){
+    arr[i].style.height=parseFloat(bar.style.height)+a*(targetH-parseFloat(bar.style.height))+"px";
+    arr[i].innerText=parseFloat(bar.style.height);
+    }
+}
+
+function init(){
+    wrapper =  document.getElementById("wrapper");
+    createBar();
+    setInterval("move()",10);
+    }
+
+window.addEventListener("load",function(){
+        init();
+    });
+
+</script>
+
+</head>
+<body>
+    <div id="wrapper"></div>    
+    <button>버튼</button>
+</body>
+</html>

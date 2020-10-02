@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 600px;
+            height: 600px;
+            background: yellow;
+            margin:auto;
+        }
+
+        #mask{
+            width: 200px;
+            height: 200px;
+            background:red;
+            /* 본연의 위치에서 left200, top200만큼 떨어트려서 중앙으로 오게끔하자 */
+            position: relative;
+            left:200px;
+            top:200px;
+        }
+
+        #cell{
+            width: 600px;
+            height: 600px;
+            background:blue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="mask">
+            <div id="cell">이미지셀 </div>
+        </div>
+    </div>
+    
+</body>
+</html>

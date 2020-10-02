@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+
+var cnt=0;
+
+function createBall(){
+   
+    cnt++;
+    
+    var img=document.createElement("img"); 
+    var img2=document.createElement("img2"); 
+
+     //  <img/>태그를 명시한 것과 동일한 상태임 
+
+     img.src="../images/ball/ball1.jpg";
+     img2.src="../images/ball/ball2.png";
+    
+    if(cnt%5==0){
+        document.body.appendChild(img2);
+    }else{
+
+        document.body.appendChild(img);
+    }
+    
+   // img.style.border="2px solid red";
+    img.style.width=50+"px";
+    img2.style.width=50+"px";
+  
+  
+
+  
+   
+}    
+</script>
+</head>
+<body>
+    <button onClick="createBall()">공생성</button>
+
+    <img src="../images/ball/ball1.jpg"/>
+    <img src="../images/ball/ball2.png"/>
+
+</body>
+</html>

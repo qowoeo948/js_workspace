@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var img;
+        var wrapper;
+
+        var x=100;
+        var y=50;
+
+        var stepX = 5;
+        var stepY = 8;
+
+        var flag=true;
+
+
+
+function init(){
+    createbutton();
+   wrapper =  document.createElement("div");
+    wrapper.style.width=600+"px";
+    wrapper.style.height=600+"px";
+    wrapper.style.background="yellow";
+    wrapper.style.margin="auto";
+    wrapper.style.position="relative";
+
+    document.body.appendChild(wrapper);
+
+     img= document.createElement("img");
+    img.src="../images/ball/ball1.jpg";
+
+    img.style.width=50+"px";
+    img.style.height=50+"px";
+    img.style.position="absolute";
+    img.style.left=100+"px";
+    img.style.top=50+"px";
+
+    wrapper.appendChild(img);
+
+}
+
+function createbutton(){
+
+    var bt1=document.createElement("button");
+    var bt2=document.createElement("button");
+    var bt3=document.createElement("button");
+    
+    
+     bt1.addEventListener("click",function(){
+        move();
+    });
+
+    bt2.addEventListener("click",function(){
+        setInterval("move()",10);
+    });
+    bt3.addEventListener("click",function(){
+       flag=!flag;
+    });
+
+  
+    bt1.innerText="수동"; //<button>수동</button>
+    bt2.innerText="자동";
+    bt3.innerText="멈춤";
+
+
+    document.body.appendChild(bt1);
+    document.body.appendChild(bt2);
+    document.body.appendChild(bt3);
+}
+
+function move(){
+ if(flag){
+
+    x=x+stepX;
+    y=y+stepY;
+
+    console.log(x);
+
+    img.style.left=x+"px";
+    img.style.top=y+"px";
+
+   var w = wrapper.style.width;
+   var h = wrapper.style.height;
+
+   w = parseInt(w);
+   h = parseInt(h);
+
+    if(x<=0 || x>=(w-parseInt(img.style.width))){
+      stepX = -stepX ;
+}
+    if(y<=0 || y>=(h-parseInt(img.style.height))){      
+        stepY = -stepY ;
+    }  
+
+ }
+
+}
+       
+    </script>
+</head>
+<body onload="init()">
+   
+   
+</body>
+</html>

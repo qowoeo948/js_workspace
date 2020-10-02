@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+    
+var n =prompt("몇번째마다 다른 공을 생성할래요?");
+//프롬프트의 특싱상 "5"입력시 문자로 이해한다.
+//따라서 숫자로 바꾸려면 parsInt()해주자
+
+n=parseInt(n);
+var cnt=0;
+
+function createBall(){
+   
+    cnt++;
+    
+    var img=document.createElement("img"); 
+    
+
+     //  <img/>태그를 명시한 것과 동일한 상태임 
+
+    if(cnt%n==0){
+     img.src="../images/ball/ball1.jpg";
+
+    }else{
+     img.src="../images/ball/ball2.png";
+
+    }
+   
+    
+    
+        document.body.appendChild(img);
+  
+   // img.style.border="2px solid red";
+    img.style.width=50+"px";
+    
+  
+  
+
+  
+   
+}    
+</script>
+</head>
+<body>
+    <button onClick="createBall()">공생성</button>
+
+</body>
+</html>

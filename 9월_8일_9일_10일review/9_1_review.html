@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image:url(https://previews.123rf.com/images/alexmstudio/alexmstudio1508/alexmstudio150800012/43889983-%EB%A7%8C%ED%99%94-%EA%B2%8C%EC%9E%84-%EB%B0%B0%EA%B2%BD.jpg);
+        background-repeat: repeat-x;
+        background-position: 0px 0px;
+        background-size: 100% 400px;
+        }
+        #pic{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            left:50px;
+            top:50px;
+        }
+
+    </style>
+<script>
+    var pic;
+    var bgX=0;
+    var x=50;
+    var y=50;
+    function movebg(){
+       document.body.style.backgroundPosition=bgX+"px 0px";
+       bgX = bgX-30;
+    }
+    
+    function auto(){
+        setInterval("movebg()",200);
+    }
+
+    function pre(){
+        pic = document.getElementById("pic");
+        x=x-20;
+        pic.style.left=x+"px";
+
+    }
+    function next(){
+        pic = document.getElementById("pic");
+        x=x+20;
+        pic.style.left=x+"px";
+
+    }
+    function up(){
+        pic = document.getElementById("pic");
+        y=y-20;
+        pic.style.top=y+"px";
+    }
+    function down(){
+        pic = document.getElementById("pic");
+        y=y+20;
+        pic.style.top=y+"px";
+    }   
+
+</script>
+</head>
+<body>
+    <button onclick="pre()">◀</button>
+    <button onclick="next()">▶</button>
+    <button onclick="up()">▲</button>
+    <button onclick="down()">▼</button>
+    <button onclick="movebg()">수동배경</button>
+    <button onclick="auto()">자동배경</button>
+    <img id="pic" src="../images/hero/image12.png">
+    
+</body>
+</html>

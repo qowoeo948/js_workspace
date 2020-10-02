@@ -1,0 +1,36 @@
+<script>
+
+//크기가 10인 배열에 0부터 9까지 정수를 채우고, 다시 출력하는 프로그램을 작성하세요.
+// var dk = new Array();
+
+// for(var i=0;i<dk.length;i++){
+
+//     dk[i]=i;
+//     document.write("<br>");
+//     document.write(dk[i]);
+// }
+
+// document.write(dk[3]);
+
+
+
+//배열의 첫번째 공간부터 10번째 공간까지는 0을 대입하고, 
+//11번째부터 20번째 까지는 1을 대입하여 출력하세요.
+
+var dk = new Array(20);
+
+for(var i=0;i<dk.length;i++){
+
+    if(i<10)   //if(i<dk.length/2)
+        dk[i]=0;
+    else
+    dk[i]=1;
+
+
+    document.write(i+"="+dk[i]);
+    document.write("<br>");
+}
+
+document.write(dk); // 반복문 쓰지 않고 이렇게 배열의 모습을 보여주기도 함
+
+</script>

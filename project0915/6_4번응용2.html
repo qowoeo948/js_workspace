@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script>
+    
+var cnt=0;
+
+function createBall(){
+   
+    cnt++;
+    
+    var img=document.createElement("img"); 
+    //변수 n의 값을 텍스트박스로부터 구하자!!
+    var n =document.getElementById("txt").value;
+    //문자여서 이것도 parseInt해줘라
+    //주의 ) parseInt()의 대상이 될 수 있는 건 "쌍따옴표"를 벗겻을때
+    //정수가 될수있는 문자만 가능하다..
+    n=parseInt(n);
+
+    var path = document.getElementById("path").value;
+
+     //  <img/>태그를 명시한 것과 동일한 상태임 
+
+    if(cnt%n==0){
+     img.src="../images/ball/ball1.jpg";
+
+    }else{
+     img.src="../images/ball/ball2.png";
+
+    }
+
+    img.src=(cnt%n==0)? path:"../images/ball/ball1.jpg";
+     
+        document.body.appendChild(img);
+  
+   // img.style.border="2px solid red";
+    img.style.width=50+"px";
+    
+}    
+
+
+function auto(){
+    setInterval("createBall()",500);
+}
+</script>
+</head>
+<body>
+    <input id="txt" type="text" placeholder="몇번째 마다 공을 생성할지 숫자입력">
+    <input id="path" type="text" placeholder="사용될 이미지 경로">
+
+    <button onClick="createBall()">공생성</button>
+    <button onclick="auto()">자동생성</button>
+    <br>
+</body>
+</html>

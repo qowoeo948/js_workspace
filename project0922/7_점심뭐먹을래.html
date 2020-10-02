@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script src="../jslib/lib.js"></script>
+<script>
+
+    var lunch = new Array();
+    lunch[0]="떡볶이";
+    lunch[1]="제육";
+    lunch[2]="삼겹살";
+    lunch[3]="kfc";
+    lunch[4]="롯데리아";
+    lunch[5]="버거킹";
+    lunch[6]="맥도날드";
+    lunch[7]="돈까쓰";
+    lunch[8]="라면";
+    lunch[9]="중국집";
+    
+    window.addEventListener("load",function(){
+        var bt = document.querySelector("button");
+        bt.addEventListener("click",function(){
+           //h1에 메뉴를 출력하자
+        var h1 = document.querySelector("h1"); 
+            h1.innerText=lunch[getRandom(lunch.length-1)];
+          
+        });
+        
+    
+
+});
+   
+
+
+
+</script>
+</head>
+<body>
+    <button>점심메뉴 보여주기</button>
+    <h1></h1>
+    
+
+    </div>
+</body>
+</html>

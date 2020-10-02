@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 700px;
+            height: 600px;
+            background:gray;
+            margin:auto;
+            overflow: hidden;
+        }
+        .wrapper div{
+            width: 100px;
+            height: 100px;
+            background:lightblue;
+            float: left;
+            
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        #content{
+    width: 550px;
+    height: 600px;
+    background:pink;
+    
+
+}
+    </style>
+
+    <script>
+        function setImg(img){
+    var content = document.getElementById("content");
+    content.style.src="../images/hero/image"+img+".png";
+  
+
+}
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div onclick="setImg(1)" ></div>
+        <div onclick="setImg(5)" ></div>
+        <div onclick="setImg(7)" ></div>
+        <div onclick="setImg(9)" ></div>
+        <div onclick="setImg(10)" ></div>
+        <div onclick="setImg(13)" ></div>
+
+        <div id="content"></div>
+
+    </div>
+    
+</body>
+</html>

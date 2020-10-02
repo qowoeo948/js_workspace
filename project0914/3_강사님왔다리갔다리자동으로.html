@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #box{
+        width: 100px;
+        height: 100px;
+        background:red;
+        position: absolute;
+        left:0px;
+        top:200px;
+        color:yellow;
+        font-weight: bold;
+        text-align: center;
+    }
+
+</style>
+
+<script>
+    var x=0; //박스의 x좌표값을 결정짓는 변수
+   var step=5;
+   var flag=true;
+    
+    function move(){
+        x=x+step;
+        document.getElementById("box").style.left=x+"px";
+      
+      //400이상이거나, 0이하면 기존의 5는 부호를 바꿔야 한다. 
+      //방법1
+    //   flag=(x<=0 || x>=400) ? !flag :flag;
+    //   step=(flag) ? 5:-5;
+      
+      //또는  방법2
+      step = (x<=0 || x>=400) ? -step:step;
+
+     document.getElementById("box").innerText=x;
+
+    }
+
+    function auto(){
+        setInterval("move()",10);
+    }
+
+    
+
+
+</script>
+</head>
+<body>
+    <button onclick="move()">수동움직이기</button>
+    <button onclick="auto()">자동움직이기</button>
+    <input type="text" id="info"/>
+
+    <div id="box"></div>
+    
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+            width: 700px;
+            height: 700px;
+            background:black;
+            margin:auto;
+        }
+        .wrapper div{
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        #content{
+            width:100%;
+            height: 600px;
+            background:palevioletred;
+        }
+    </style>
+
+<script>
+    function setColor(bg){
+        var con = document.getElementById("content");
+     
+        con.style.backgroundColor=bg;
+    }
+
+
+
+
+</script>
+</head>
+<body>
+    <div class="wrapper">
+        <div onclick="setColor('red')" style="background:red">빨강</div>
+        <div onclick="setColor('orange')" style="background:orange">주황</div>
+        <div onclick="setColor()" style="background:yellow">노랑</div>
+        <div onclick="setColor()" style="background:greenyellow">초록</div>
+        <div onclick="setColor()" style="background:blue">파랑</div>
+        <div onclick="setColor()" style="background:navy">남색</div>
+        <div onclick="setColor()" style="background:blueviolet">보라</div>
+
+<div id="content">content</div>
+    </div>
+    
+</body>
+</html>

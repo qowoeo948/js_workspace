@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 500px;
+        height: 500px;
+        background:red;
+        margin:auto;
+        position: relative;
+       
+    }
+    #sch{
+        width: 100px;
+        height: 100%;
+        background:lightgreen;
+        position:absolute;
+        left:0px;
+        top:0px;
+      
+    }
+    #content{
+        width: 400px;
+        height: 100%;
+        background:lightpink;
+        position:absolute;
+        left:100px;
+        top:0px;
+       
+    }
+    #mask{
+        width: 400px;
+        height: 100%;
+        background:black;
+        opacity: 0.8;
+      
+    }
+    img, #mask{
+        position:absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+</style>
+<script>
+    var flag=false;
+
+    function turn(){
+        var pic = document.getElementById("pic");
+        var imag = document.getElementById("mask");
+
+        flag=!flag;
+       if(flag==false){
+
+        pic.src="../images/light/switch_off.png";
+        imag.style.opacity=0.8;
+       }
+        else if(flag==true){
+
+        pic.src="../images/light/switch_on.png";
+        imag.style.opacity=0;
+        }
+       
+   
+    }
+
+</script>
+</head>
+<body>
+    <div id="wrapper">
+
+        <div id="sch">스위치
+            <img id="pic" src="../images/light/switch_off.png" onclick="turn()">
+        </div>
+        <div id="content">배경
+            <img id="imag" src="../images/light/room.jpg" width="400px" height="100%">
+            <div id="mask"></div>
+        </div>
+    
+    </div>
+    </body>
+</html>

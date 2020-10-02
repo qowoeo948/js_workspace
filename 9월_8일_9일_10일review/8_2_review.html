@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height:200px;
+        }
+    </style>
+<script>
+    var img;
+    var n=1;
+    function opa(){
+        img=document.getElementById("fire");
+        img.style.opacity=n;
+        n=n+0.2;
+    }
+    function nonopa(){
+        img=document.getElementById("fire");
+        img.style.opacity=n;
+        n=n-0.2;
+
+    }
+
+</script>    
+</head>
+<body>
+    <div>
+        <img id="fire" src="../images/fire.jpg">
+        <button onclick="opa()">점점 투명하게</button>
+        <button onclick="nonopa()">점점 불투명하게</button>
+    </div>
+    
+</body>
+</html>

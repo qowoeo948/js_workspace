@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 400px;
+        height: 650px;
+        background:aquamarine;
+        margin: auto;
+    }
+    #question{
+        width: 100%;
+        height: 250px;
+        background: yellowgreen;
+        font-size: 95px;
+        text-align: center;
+    }
+    .word-input{
+        width: 100%;
+        height: 100px;
+        background:  lightblue;
+    }
+    .word-input input{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        font-size: 50px;
+        text-align: center;
+    }
+
+    #feedback{
+        width: 100%;
+        height: 200px;
+        background: lightpink ;
+        font-size: 170px;
+        text-align: center;
+    }
+
+    #record{
+        width: 100%;
+        height: 100px;
+        background:  beige;
+        font-size: 70px;
+        text-align: center;
+
+    }
+
+</style>   
+
+<script>
+    //게임에서 진행할 데이터를 생성하되, 순서를 갖게 해야한다.
+    //왜? 엔터칠때마다 해당 단어의 다음단어, 그다음단어.. 구현하려면
+    //순서라는게 존재해야 하므로..
+    //배열로 준비시키자!! 데이터가 순서를 가지며 메모리에 올라간다.
+
+    var word = new Array();
+    word[0]="이동규";
+    word[1]="김진영";
+    word[2]="조현일";
+    word[3]="손희주";
+    word[4]="은지희";
+    word[5]="노혜린";
+    word[6]="조준모";
+    word[7]="루시";
+    word[8]="모찌";
+    word[9]="찌쓰";
+
+var question;
+var txt;
+var feedback;
+var record;
+
+var n=0; //단어배열의 index 정보를 가진 변수 (즉 몇번째 데이터를 보여줄지)
+var score=0; //점수를 누적시킬 변수
+
+function init(){
+    //아이디가 부여된 엘리먼트 들을 전역변수로 미리 선언해 놓자.
+    question = document.getElementById("question");
+    txt = document.getElementById("txt");
+    feedback = document.getElementById("feedback");
+    record = document.getElementById("record");
+
+    //단어 출력
+    printWord();
+    //점수출력
+    printScore();
+
+    //txt에 커서 올려놓기!
+        txt.focus();
+
+
+    //키보드 이벤트 부여
+    //총알이라면, 눌렀다는 이벤트에 반응하면 되지만,
+    //글씨입력이기 떄문에 눌렀다 떼었을때가 하나의 철자가 입력되는 시점이다.
+    txt.addEventListener("keyup",function(){
+        // console.log("키보드 눌렀네요");
+        //키보드 중, 엔터키를 누를때 다음 단어 나오게 처리..
+        
+        if(event.keyCode==13){ //enter
+            //입력값과 출력된 단어와의 일치성을 판단한 후, 피드백 처리
+            if(txt.value==question.innerText){
+                //칭찬의 피드백으로 O를 출력
+                //점수도 10점 증가
+                feedback.innerText="O";
+                score=score+10;
+                printScore();
+                
+            }else{
+                //X를 출력
+                feedback.innerText="X";
+            }
+
+            txt.value="";
+            
+            n++; //다음단어 나오기
+
+            if(n>=word.length){
+                alert("게임종료");
+                question.innerText="Game End!!";
+            }else{
+                printWord();
+            }
+        }
+    });
+
+    
+
+}
+
+//단어 출력 처리 함수
+function printWord(){
+    question.innerText=word[n];
+
+ 
+}
+
+//점수 출력처리
+function printScore(){
+   record.innerText=score+" 점";
+}
+
+window.addEventListener("load",function(){
+    init();
+    
+
+});
+   
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="question">단어나올곳</div>
+        <div class="word-input">
+            <input id="txt" type="text" placeholder="단어 따라치세요">
+            </div>
+        <div id="feedback"></div>
+        <div id="record"></div>
+
+    </div>
+    
+</body>
+</html>

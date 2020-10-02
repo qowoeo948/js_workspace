@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 400px;
+        height: 75px;
+        background-color:white;
+        margin:auto;
+        position: relative; /*자식 떄문에*/
+         /* overflow: hidden;  */
+    
+    }
+    body{
+        background-color:black;
+    }
+
+button
+
+{
+   width: 100px;
+   height: 100px;
+
+}
+
+ 
+</style>    
+
+<script>
+    var arr = new Array(5); //반복문으로 채워넣기 위해
+
+
+
+    function init(){
+
+        for(var i=0;i<5;i++){
+        //이미지 5개를 동적으로 생성하여 wrapper에 추가!!
+        var img = document.createElement("img");
+        arr[i]=img; //arr[0] = 0img, arr[1]=100img , arr[2]=200img
+       img.src="../images/travel/"+(i+1)+".jpg";
+        img.style.width=100+"px";
+        img.style.height=75+"px";
+        img.style.position="absolute";
+        img.style.left=(i*100)+"px";
+        img.style.border="5px solid red";
+        img.style.boxSizing="border-box";
+
+        //현재의 자신의 좌표
+        img.innerText=img.style.left;
+        
+        var wrapper = document.getElementById("wrapper");
+        wrapper.appendChild(img);
+
+    }
+    
+}
+
+//모든 이미지들의 좌표를 좌측방향으로 (x 음수) 이동하다가, 
+function move(){
+
+    for(var i=0;i<=4;i++){
+        arr[i].style.left=parseInt(arr[i].style.left)-100+"px";
+       
+       if(parseInt(arr[i].style.left)<=-100){
+       console.log(arr[i].style.left);
+       arr[i].style.left = 400+"px";
+       
+       }
+    }
+}
+
+var flag=false;
+var st;
+function auto(){
+
+    var bt = document.getElementById("bt");
+            
+            if(flag==false){
+                bt.innerText="멈춤";    
+                st = setInterval("move()",800);
+
+            }else{
+                bt.innerText="동작";
+                clearTimeout(st); //이미돌아가는 자동함수를 제거
+            }
+
+            flag=!flag; //기존값 부정
+
+}
+
+    window.addEventListener("load",function(){
+        init();
+      
+
+    });
+
+</script>
+</head>
+<body>
+    <div id="wrapper"></div>
+    <button id="bt" onclick="auto()">버튼</button>
+    
+</body>
+</html>

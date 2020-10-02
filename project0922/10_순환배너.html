@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 400px;
+        height: 75px;
+        background-color:white;
+        margin:auto;
+        position: relative; /*자식 떄문에*/
+        /* overflow: hidden; */
+    
+    }
+    body{
+        background-color:black;
+    }
+
+</style>    
+
+<script>
+    var arr = new Array(5); //반복문으로 채워넣기 위해
+
+
+
+    function init(){
+
+        for(var i=0;i<5;i++){
+        //이미지 5개를 동적으로 생성하여 wrapper에 추가!!
+        var div = document.createElement("div");
+        arr[i]=div; //arr[0] = 0div, arr[1]=100div , arr[2]=200div
+       //div.src="../images/travel/"+(i+1)+".jpg";
+        div.style.width=100+"px";
+        div.style.height=75+"px";
+        div.style.position="absolute";
+        div.style.left=(i*100)+"px";
+        div.style.border="5px solid red";
+        div.style.boxSizing="border-box";
+
+        //현재의 자신의 좌표
+        div.innerText=div.style.left;
+        
+        var wrapper = document.getElementById("wrapper");
+        wrapper.appendChild(div);
+    }
+}
+
+//모든 이미지들의 좌표를 좌측방향으로 (x 음수) 이동하다가, 
+function move(){
+
+    for(var i=0;i<=4;i++){
+        arr[i].style.left=parseInt(arr[i].style.left)-100+"px";
+       
+       if(parseInt(arr[i].style.left)<=-100){
+       console.log(arr[i].style.left);
+       arr[i].style.left = 500+"px";
+       
+       }
+
+    }
+
+}
+
+    window.addEventListener("load",function(){
+        init();
+
+    });
+
+</script>
+</head>
+<body>
+    <div id="wrapper"></div>
+    <button onclick="move()">수동움직임</button>
+    
+</body>
+</html>

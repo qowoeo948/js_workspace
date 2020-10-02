@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+     var n=1;
+    function next(){
+        n=n+1;
+        //문서내의 pic이라 불리는 요소의 src속성을 교체!
+        document.getElementById("pic").src="../images/hero/image"+n+".png";
+
+    
+    }
+
+    </script>
+</head>
+<body>
+    <img src="../images/hero/image1.png" id="pic"/>
+
+    <button onclick="next()">다음 프레임보기</button>
+    
+</body>
+</html>

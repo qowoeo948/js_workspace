@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 400px;
+        height: 800px;
+        background:aquamarine;
+        margin: auto;
+    }
+    #nationgi{
+        width: 100%;
+        height: 200px;
+        background: yellowgreen;
+        font-size: 95px;
+        text-align: center;
+    }
+    img{
+        width:100%;
+        height: 200px;
+    }
+    #hint{
+        width: 100%;
+        height: 150px;
+        background: lightslategray;
+        font-size: 50px;
+        text-align: center;
+    }
+    
+
+    #answer{
+        width: 100%;
+        height: 100px;
+        background: lightpink ;
+        font-size: 100px;
+        text-align: center;
+    }
+
+    #answer input{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        font-size: 100px;
+        text-align: center;
+    }
+
+    #feedback{
+        width: 100%;
+        height: 175x;
+        background: lightpink ;
+        font-size: 170px;
+        text-align: center;
+    }
+
+
+    #record{
+        width: 100%;
+        height: 175px;
+        background:  beige;
+        font-size: 70px;
+        text-align: center;
+
+    }
+
+</style>   
+
+<script src="./8_nation.js"></script>
+<script>
+
+ var wrapper, nationgi,hint,answer,feedback,record;
+ var img;
+ var index=0;
+
+ var word = new Array();
+    word[0]="미국";
+    word[1]="멕시코";
+    word[2]="이탈리아";
+    word[3]="영국";
+    word[4]="독일";
+    word[5]="스페인";
+    word[6]="프랑스";
+    word[7]="러시아";
+    word[8]="브라질";
+    word[9]="캐나다";
+    word[10]="일본";
+    word[11]="중국";
+    word[12]="호주";
+
+
+     function init(){
+        wrapper=  document.getElementById("wrapper");
+        nationgi = document.getElementById("nationgi");
+        img = document.getElementById("img");
+        hint = document.getElementById("hint");
+        answer= document.getElementById("answer");
+        feedback = document.getElementById("feedback");
+        record = document.getElementById("record");
+
+        txt.addEventListener("keyup",function(){
+       
+        if(event.keyCode==13){ 
+            create();
+                for(var i=0;i<data.length;i++){
+
+                    if(txt.value==data[i][3]){
+                        //칭찬의 피드백으로 O를 출력
+                        //점수도 10점 증가
+                        feedback.innerText="O";
+                        
+                        
+                    }else{
+                        //X를 출력
+                        feedback.innerText="X";
+                        
+                    }
+                }
+        }
+    });
+
+       
+    }
+
+    function create(){
+
+        img.src=data[index][0];   
+         hint.innerText=data[index][1];
+            index++;
+    }
+
+    window.addEventListener("load",function(){
+
+        init();
+        create();
+    });
+   
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="nationgi">
+            <img id="img" src="../images/nation/1.png">
+        </div>
+        <div id="hint">  </div>
+        <div id="answer">
+            <input id="txt" type="text" placeholder="정답">
+        </div>
+        <div id="feedback"></div>
+        <div id="record"></div>
+
+    </div>
+    
+</body>
+</html>

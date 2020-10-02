@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ <style>
+     #wrapper{
+         width: 700px;
+         height: 700px;
+         background:turquoise;
+        margin:auto;
+        position: relative;
+     }
+
+ 
+ </style>
+ 
+ 
+ <script>
+     //문서가 로드되면, 초기화할 작업을 아래의 init함수에서 처리해보자!!
+
+     var box; //문서내의 div박스를 담아 놓을 전역변수
+    var x=50;  //x좌표 결정 전역변수
+    var y=80; //y좌표 결정 전역변수
+                    //y값이 100인 이유는? 내 마음
+
+    var q=0;
+    var p=0;
+
+     function init(){
+        box=document.getElementById("box"); //전역변수에 보관!!
+         //박스의 스타일을 css에서가 아니라, js프로그래밍으로 처리한다!!
+         //효과적으로 달라질게 없으나, css를 프로그램으로 제어할수있다.
+        box.style.width=50+"px";
+        box.style.height=50+"px";
+        box.style.background="red";
+        box.style.position="absolute";
+        box.style.left=50+"px";
+        box.style.top=80+"px";
+
+     }
+
+//      function getPoint(){
+
+//     console.log("x축: ", event.clientX);
+//     console.log("y축: ", event.clientY);
+
+//     if(event.clientX==700){
+
+//     }else if(event.clientY==700){
+
+//     }
+
+//     //조사된 마우스 위치 정보를 구했으니, 이 정보를 이미지에 적용해버리자
+//     //그렇게 하면 이미지의 좌표와 마우스의 좌표가 일치하게 되어,
+//     //따라다니는 효과가 나게 된다.
+
+//     document.getElementById("pic").style.left=(event.clientX-50)+"px";
+//     document.getElementById("pic").style.top=(event.clientY-50)+"px";
+
+
+// }
+
+     //수동으로 box의 left,top을 변경시켜나가보자!
+     function move(){
+         x=x+5;
+         y=y+8;
+       box.style.left=x+"px";
+       box.style.top=y+"px";
+
+
+    //    if(width==700){
+    //        x=x-5;
+    //    }else if(height==700){
+    //        y=y-5;
+    //    }
+
+
+    //  q=  box.event.clientX;
+    //  p=  box.event.clientY;
+       
+
+    console.log("x축: ",box.event.clientX);
+    console.log("y축: ", box.clientY);
+
+   
+
+     }
+
+     function auto(){
+        setInterval("move()",10);
+
+     }
+     
+     function getPoint(){
+    //마우스의 실시간 좌표를 택스트박스에 출력해보자
+    
+    //발생하는 이벤트에 대한 모든 정보는 event라는 객체가 보유하고있다.
+    //아까 예제에서 키보드에 대한 아스키코드값을 가져왔었다.
+    //이번엔, 키보드가 아니라 마우스에 관한 이벤트일뿐이다..
+
+
+    document.getElementById("tx").value=event.clientX;
+    document.getElementById("ty").value=event.clientY;
+    console.log("x축: ", box.event.clientX);
+    console.log("y축: ", box.event.clientY);
+
+    
+
+}
+ </script>
+
+
+</head>
+<body onload="init()" onmousemove="getPoint()">
+    <div id="wrapper">
+        
+        마우스 x좌표: <input type="text" id="tx"/>
+        마우스 y좌표: <input type="text" id="ty"/>
+
+
+        <button onclick="move()">수동</button>
+        <button onclick="auto()" >자동</button>
+       
+        <div id="box"></div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background:lightseagreen;
+            position: absolute;
+            top:100px;
+            left:5px;
+            
+        }
+    </style>
+
+    <script>
+        var x=0;
+        var step=5;
+        function bt(){
+            var box = document.getElementById("box");
+            x=x+step;
+           box.style.left=x+"px";
+           if(x<=0 || x>=200)
+            step=-step;
+
+           box.innerText=x;
+        }
+    </script>
+
+</head>
+<body>
+    <button id="bt" onclick="bt()">움직이기</button>
+    
+    <div id="box"></div>
+</body>
+</html>

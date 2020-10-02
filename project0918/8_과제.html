@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+ 
+</style>
+
+<script>
+    var xx=0;
+    var yy=0;
+   
+    var ball;
+
+ var targetX=0; //박스가 도달할 목표지점 
+ var targetY=0;
+ let a=0.1;
+
+ 
+
+function init(){
+    
+    ball = document.getElementById("circle");
+    ball.style.width=50+"px";
+    ball.style.height=50+"px";
+    ball.style.background="red"
+    ball.style.position="absolute";
+    ball.style.left=0+"px";
+    ball.style.top=100+"px";
+    ball.style.borderRadius=10+"px";    
+}
+
+
+
+function exc(){            
+    
+    xx= document.getElementById("xx");
+    yy= document.getElementById("yy");
+      
+       
+      
+        ball.style.left=parseInt(ball.style.left)+a*(xx.value-parseInt(ball.style.left))+"px";
+        console.log(ball.style.left);
+       ball.style.top=parseInt(ball.style.top)+a*(yy.value-parseInt(ball.style.top))+"px";
+        console.log(ball.style.top);
+
+
+     ball.innerText="x= "+xx.value+", y= "+yy.value;
+
+}
+var dk;
+
+function auto(){
+dk=  setInterval("exc()",10);
+}
+
+function clearx(){
+    clearInterval(dk);
+}
+
+
+</script>
+</head>
+<body onload="init()">
+   
+        <input id="xx" type="text" placeholder="이동할 x좌표">
+        <input id="yy" type="text" placeholder="이동할 y좌표">
+        <button id="bt" onclick="auto() ">실행</button>
+        <button id="bt2" onclick="clearx()">초기화</button>
+        
+        
+        <div id="circle"></div>
+   
+</body>
+</html>

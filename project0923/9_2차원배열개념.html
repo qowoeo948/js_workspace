@@ -1,0 +1,26 @@
+<script>
+    var fruit =["apple","banana","graph","orange"];
+    var car =["bmw","benz","kia","samsung"];
+
+    var box=[];
+    //var box = new Array();  위와 동일한 코드 위에는 초기화할수있고 이건 못함 
+    box.push(fruit); //기존의 1차원 이였던 box에 또다른 배열추가
+    box.push(car); //
+
+    console.log(box[0].length);
+    for(var i=0;i<box.length;i++){
+        for(var j=0;j<box[i].length;j++){
+            document.write(box[i][j]);
+        }
+        document.write("<br>")
+    }
+
+
+    // for(var i=0;i<=2;i++){
+    //     for( var j=0;j<=1;j++){
+    //         document.write(box[i][j]);
+    //     }
+    //     document.write("<br>");
+    // }
+
+</script>

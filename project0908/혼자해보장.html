@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var op=1;
+
+        function up(){
+            op=op-0.1;
+
+            document.getElementById("pic").style.opacity=op;
+        }
+        function down(){
+            op=op+0.1;
+
+            document.getElementById("pic").style.opacity=op;
+        }
+
+
+    </script>
+
+    
+</head>
+<body>
+    <img src="../images/travel/2.jpg" id="pic"/> 
+    <button onclick="up()">점점 투명</button>
+    <button onclick="down()">점점 불투명</button>
+  
+    
+</body>
+</html>
