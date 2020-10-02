@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+   #wrapper{
+    width: 100%;
+    height: 700px;
+    background:lightskyblue;
+    position: relative;
+    }
+    #pic{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left:0px;
+        top:100px;
+    }
+</style>
+<script>
+    function getPoint(){
+
+        var x= event.clientX;
+        var y= event.clientY;
+
+        console.log("x축: ",event.clientX);
+        console.log("y축: ",event.clientY);
+
+        document.getElementById("tx").value=x;
+        document.getElementById("ty").value=y;
+
+        var pic = document.getElementById("pic");
+        pic.style.left=(x-50)+"px";
+        pic.style.top=(y-50)+"px";
+    }
+</script>
+</head>
+<body onmousemove="getPoint()">
+    <div id="wrapper">
+        <div>
+            <img id="pic" src="../images/ko.png">
+        </div>
+        마우스 x좌표<input type="text" id="tx">
+        마우스 y좌표<input type="text" id="ty">
+
+    </div>
+    
+</body>
+</html>

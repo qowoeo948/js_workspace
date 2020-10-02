@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+<script>
+    var ball;
+    var wrapper;
+    var x=30;
+    var y=30;
+    var stepX=5;
+    var stepY=8;
+    var flag=true;
+
+    function init(){
+        createBtn();
+        wrapper = document.createElement("div");
+        wrapper.style.width=500+"px";
+        wrapper.style.height=500+"px";
+        wrapper.style.background="lightblue";
+        wrapper.style.position="relative";
+        document.body.appendChild(wrapper);
+
+        ball = document.createElement("div");
+        ball.style.width=50+"px";
+        ball.style.height=50+"px";
+        ball.style.background="red";
+        ball.style.position="relative";
+        ball.style.left=30+"px";
+        ball.style.top=30+"px";
+        wrapper.appendChild(ball);
+       
+    }
+
+    function createBtn(){
+        var bt1=document.createElement("button");
+        var bt2=document.createElement("button");
+        var bt3=document.createElement("button");
+        bt1.innerText="수동";
+        bt2.innerText="자동";
+        bt3.innerText="멈춤";
+
+        document.body.appendChild(bt1);
+        document.body.appendChild(bt2);
+        document.body.appendChild(bt3);
+
+        bt1.addEventListener("click",function(){
+            move();
+        });
+        bt2.addEventListener("click",function(){
+            setInterval("move()",20);
+        });
+        bt3.addEventListener("click",function(){
+            flag=!flag;
+         
+        });
+
+    }
+
+    function move(){
+        if(flag){
+
+            x=x+stepX;
+            y=y+stepY;
+        ball.style.left=x+"px";
+        ball.style.top=y+"px";
+        ball.innerText="x="+x+"\ny="+y;
+
+        var w = wrapper.style.width;
+        var h = wrapper.style.height;
+        w=parseInt(w);
+        h=parseInt(h);
+        if(x<=0 || x>=w-parseInt(ball.style.width))
+        stepX=-stepX;
+        if(y<=0 || y>=h-parseInt(ball.style.height))
+        stepY=-stepY;
+        
+    }
+    }
+</script>
+</head>
+<body onload="init()">
+    
+</body>
+</html>

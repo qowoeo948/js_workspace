@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 500px;
+        height:500px;
+        background:lightskyblue;
+        position: relative;
+    }
+</style>
+<script>
+    var box;
+    var x=50;
+    var y=50;
+    var stepX=5;
+    var stepY=8;
+
+    function init(){
+        box = document.getElementById("box");
+        box.style.width=50+"px";
+        box.style.height=50+"px";
+        box.style.background="red";
+        box.style.position="absolute";
+        box.style.left=50+"px";
+        box.style.top=50+"px";
+    }
+    function move(){
+        x=x+stepX;
+        y=y+stepY;
+        
+        box.innerText="x="+x+"y= "+y;
+        
+        if(x<=0 || x>400)
+        stepX=-stepX
+        if(y<=0 || y>400)
+        stepY=-stepY
+       
+
+        box.style.left=x+"px";
+        box.style.top=y+"px";
+
+    }
+    function auto(){
+        setInterval("move()",10);
+    }
+</script>
+</head>
+<body onload="init()">
+    <div id="wrapper">
+        <button onclick="move()">수동</button>
+        <button onclick="auto()">자동</button>
+        <div id="box"></div>
+    </div>
+    
+</body>
+</html>
