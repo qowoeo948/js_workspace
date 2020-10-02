@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jslib/lib.js"></script>
+<script>
+    var yy,mm,dd;
+ 
+
+    window.addEventListener("load",function(){
+        init();
+    });
+
+    function init(){
+        yy=document.getElementById("yy");
+        mm=document.getElementById("mm");
+        dd=document.getElementById("dd");
+
+        var create = document.getElementById("create");
+        var remove = document.getElementById("remove");
+
+        
+
+    }
+    
+    function create(){
+        var h = document.querySelector("h1");
+        h.innerText=yy.value+"년"+ getZeroDate(parseInt(mm.value))+"월"+ getZeroDate(parseInt(dd.value))+"일";
+    }
+    function remove(){
+        var h = document.querySelector("h1");
+        h.innerText=yy.value+"년"+mm.value+"월"+dd.value+"일";
+
+    }
+
+    
+</script>
+</head>
+<body>
+    <input type="text" id="yy">년
+    <input type="text" id="mm">월
+    <input type="text" id="dd">일
+    <button onclick="create()">0접두어 처리</button>
+    <button onclick="remove()">0접두어 제거</button>
+    <h1>날짜 나올곳</h1>
+</body>
+</html>
