@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{background:black;}
+
+    #wrapper{
+        width: 400px;
+        height: 75px;
+        background:lightseagreen;
+        margin: auto;
+        position: relative;
+        /* overflow: hidden; */
+    }
+</style> 
+<script>
+    var img;
+    var imgArr=new Array();
+    function init(){
+        var wrapper = document.getElementById("wrapper");
+        for(var i=0;i<5;i++){
+            img = document.createElement("img");
+            imgArr[i]=img;
+            img.src="../images/travel/"+(i+1)+".jpg"; 
+            img.style.width=100+"px";
+            img.style.height=75+"px";
+            img.style.position="absolute";
+            img.style.left=(i*100)+"px";
+            img.style.border="2px solid red";
+            img.style.boxSizing="border-box";
+            wrapper.appendChild(img);
+        }
+    }
+
+    function move(){
+        for(var i=0;i<imgArr.length;i++){
+            imgArr[i].style.left=parseInt(imgArr[i].style.left)-1+"px";
+
+            if(parseInt(imgArr[i].style.left)<=-100){
+                imgArr[i].style.left=400+"px";
+            }
+        }
+    }
+
+    function auto(){
+        setInterval("move()",10);
+    }
+
+    window.addEventListener("load",function(){
+        init();
+    });
+</script>   
+</head>
+<body>
+    <div id="wrapper">
+    </div>
+    <button onclick="move()">수동</button>
+    <button onclick="auto()">자동</button>
+    
+</body>
+</html>

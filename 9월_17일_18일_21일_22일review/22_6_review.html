@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 400px;
+        height: 700px;
+        background:lightblue;
+        margin: auto;
+    }
+    #word{
+        width: 100%;
+        height: 300px;
+        background:lightcoral;
+        font-size: 100px;
+        text-align: center;
+    }
+    #txt{
+        width: 100%;
+        height: 100px;
+    }
+   
+    #txt input{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        font-size: 30px;
+        text-align: center;
+    }
+
+    #feed{
+        width: 100%;
+        height: 200px;
+        background: lightgray;
+        font-size: 50px;
+        text-align: center;
+    }
+    #point{
+        width: 100%;
+        height: 100px;
+        background:lightseagreen;
+        font-size: 50px;
+        text-align: center;
+    }
+</style>
+<script>
+    var wordArr = new Array();
+    wordArr[0]="이동규";
+    wordArr[1]="김진영";
+    wordArr[2]="조현일";
+    wordArr[3]="손희주";
+    wordArr[4]="은지희";
+    wordArr[5]="노혜린";
+    wordArr[6]="조준모";
+    wordArr[7]="루시";
+    wordArr[8]="모찌";
+    wordArr[9]="찌쓰";
+
+    var word;
+    var txt;
+    var feed;
+    var point;
+
+    var score=0;
+    var n=0;
+
+    function init(){
+        word = document.getElementById("word");
+        txt = document.getElementById("txt");
+        feed = document.getElementById("feed");
+        point = document.getElementById("point");
+
+        printWord();
+        printScore();
+
+        txt2.focus();
+
+        txt.addEventListener("keyup",function(){
+            console.log(txt2.value);
+            console.log(word.innerText);
+            if(event.keyCode==13){
+                if(txt2.value==word.innerText){
+                    feed.innerText="O";
+                    score=score+10;
+                    printScore();
+                }else{
+                    feed.innerText="X";
+                }
+                printWord();
+                txt2.value="";
+            }
+
+        });
+    }
+    
+    function printWord(){
+        word.innerText=wordArr[n];
+        n++;
+
+    }
+
+    function printScore(){
+        point.innerText=score+"점";
+    }
+
+
+    window.addEventListener("load",function(){
+        init();
+    });
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="word">단어나올곳</div>
+        <div id="txt">
+            <input id="txt2" type="text" placeholder="단어를 따라 치세요">
+        </div>
+        <div id="feed"></div>
+        <div id="point"></div>
+
+    </div>
+    
+</body>
+</html>

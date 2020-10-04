@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #wrapper{
+        width: 1200px;
+        height: 700px;
+        background:lightseagreen;
+        margin: auto;
+        overflow: hidden;
+    }
+    #dash{
+        width: 200px;
+        height: 100%;
+        background: lightslategray;
+        float: left;
+    }
+    button,select,input{
+        width: 90%;
+        height: 40px;
+        margin-bottom: 4px;
+        font-size: 24px;
+    }
+    #stage{
+    width:1000px;
+    height:100%;
+    background:dodgerblue;
+    float: left;
+    position: relative;
+    }
+    #scoreBox{
+    width: 100%;
+    height: 100px;
+    font-size: 50px;
+    font-weight: bold;
+    background:white;
+    }
+</style>  
+<script src="../jslib/lib.js"></script>  
+<script>
+    var word=[
+    ["이동규","김진영","조현일","이유석","이상수","남소정","조준모","박선우","류지환","최준혁"],
+    ["노혜린","은지희","손희주","김희준","김다예","강다솔","유승아","심소영","방채연","유다희"],
+    ["영국","호주","미국","한국","일본","중국","사우디","이란","우즈벡","아르헨티나"],
+    ["브라질","포르투칼","스페인","이탈리아","스위스","체크","스웨덴","뉴질랜드","캄보디아","독일"],
+    ["사자","호랑이","곰","늑대","여우","악어","하마","고양이","강아지","고슴도치"]
+    ];
+
+    var stage;
+    var sel;
+    var scoreBox;
+    var spanArr=[];
+    var stepY=5;
+    var flag=false;
+  
+
+    function createWord(){
+        for(var i=0;i<=word[0].length;i++){
+            var span = document.createElement("span");
+            span.innerHTML=word[0][i];
+            span.style.position="absolute";
+            span.style.left=(i*100)+"px";
+            span.style.top= getRandomBetween(0,200)+"px";   
+            stage.appendChild(span);
+            spanArr.push(span);
+        }
+    }
+
+    function move(){
+        if(flag){
+
+            for(var i=0;i<spanArr.length;i++){
+                
+                spanArr[i].style.top=parseInt(spanArr[i].style.top)+stepY+"px";
+                
+            }
+        }
+    }
+
+    function startGame(){
+        flag=true;
+
+    }
+
+    function createOption(){
+        for(var i=0;i<word.length;i++){
+            var op = document.createElement("option");
+            op.text="레벨"+(i+1);
+            op.value=i;
+            sel.add(op);
+        }
+    }
+    function printScore(){
+        scoreBox.innerHTML=score+"점";
+    }
+
+
+
+    function init(){
+
+         stage = document.getElementById("stage");
+         sel = document.getElementById("sel");
+         scoreBox = document.getElementById("scoreBox");
+    }
+
+    window.addEventListener("load",function(){
+        init();
+        createWord();
+        setInterval("move()",100);
+        createOption();
+
+        keyword.addEventListener("keyup",function(){
+            
+
+        });
+
+    });
+</script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="dash">
+            <button onclick="startGame()">Start</button>
+            <select id="sel"></select>
+            <input type="text" id="keyword" placeholder="단어입력">
+            <div id="scoreBox"></div>
+        </div>
+        <div id="stage"></div>
+    </div>
+    
+</body>
+</html>

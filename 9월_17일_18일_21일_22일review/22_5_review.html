@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #wrapper{
+        width: 600px;
+        height: 600px;
+        background:gray;
+        margin:auto;
+    }
+    #root{
+        width: 100%;
+        height: 100px;
+        background:lightblue;
+        text-align: center;
+        font-size: 50px;
+    }
+    #pic{
+        width: 100%;
+        height: 450px;
+    }
+    #navi{
+        width: 100%;
+         height: 50px;
+         text-align: center;
+    }
+</style>
+<script>
+    var imgArr=new Array();
+    imgArr[0]="../images/travel2/aa.jpg";
+    imgArr[1]="../images/travel2/ya.jpg";
+    imgArr[2]="../images/travel2/ab.jpg";
+    imgArr[3]="../images/travel2/bm.jpg";
+    imgArr[4]="../images/travel2/pk.jpg";
+    imgArr[5]="../images/travel2/mx.jpg";
+    imgArr[6]="../images/travel2/kg.jpg";
+    imgArr[7]="../images/travel2/et.jpg";
+    imgArr[8]="../images/travel2/ub.jpg";
+    imgArr[9]="../images/travel2/ax.jpg";
+
+    var pic;
+    var n=0;
+    function printPath(){
+        var root = document.getElementById("root");
+        root.innerText=imgArr[n];
+    }
+    function prev(){
+        if(n>=1){
+
+            n--;
+            pic.src=imgArr[n];
+            printPath();
+        }else{
+            alert("더이상 갈곳이 없다");
+        }
+    }
+    function next(){
+        if(n<imgArr.length-1){
+            n++;
+            pic.src=imgArr[n];
+            printPath();
+        }else{
+            alert("더이상 갈곳이 없다");
+        }
+    }
+    function auto(){
+        var interval = document.getElementById("interval");
+        var speed = parseInt(interval.value);
+
+        setInterval("next()",speed);
+    }
+    
+
+
+
+
+    function init(){
+     pic = document.getElementById("pic");
+
+    }
+    window.addEventListener("load",function(){
+        printPath();
+        init();
+      
+    });
+</script>
+<body>
+    <div id="wrapper">
+        <div id="root">경로</div>
+        <div id="photo">
+            <img id="pic" src="../images/travel2/aa.jpg">
+        </div>
+        <div id="navi">
+            <button onclick="prev()">◀</button>
+            <button onclick="auto()">auto</button>
+            <select id="interval">
+                <option>속도선택</option>
+                <option value="1000">1</option>
+                <option value="1500">1.5</option>
+                <option value="2000">2</option>
+            </select>
+            <button onclick="next()">▶</button>
+        </div>
+    </div>
+    
+</body>
+</html>
