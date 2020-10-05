@@ -38,6 +38,18 @@
     font-weight: bold;
     background:white;
     }
+
+    #hpBox{
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background:lightgray;
+    margin-top: 50px;
+    text-align: center;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
 </style>  
 <script src="../jslib/lib.js"></script>  
 <script>
@@ -52,9 +64,11 @@
     var stage;
     var sel;
     var scoreBox;
+    var hp;
     var spanArr=[];
     var stepY=5;
     var flag=false;
+    var score=0;
   
 
     function createWord(){
@@ -97,13 +111,39 @@
         scoreBox.innerHTML=score+"점";
     }
 
+    function createHp(){
+        for(var i=0;i<9;i++){
+                var hp = document.createElement("div");
+                hp.style.width=60+"px";
+                hp.style.height=60+"px";
+                hp.style.background="red";
+                hp.style.float="left";
+                hp.style.border="2px solid black";
+                hpBox.appendChild(hp);
+            
+        }
+    }
+
 
 
     function init(){
-
          stage = document.getElementById("stage");
          sel = document.getElementById("sel");
          scoreBox = document.getElementById("scoreBox");
+         hp = document.getElementById("hp");
+
+         keyword.addEventListener("keyup",function(e){
+             if(e.keyCode==13){
+                 for(var i=0;i<word[0].length;i++){
+                     if(keyword.value==word[0][i]){
+                         score+=10;
+                         printScore();
+                        }
+                    }
+                    keyword.value="";
+                }
+     
+         });
     }
 
     window.addEventListener("load",function(){
@@ -111,11 +151,8 @@
         createWord();
         setInterval("move()",100);
         createOption();
+        createHp();
 
-        keyword.addEventListener("keyup",function(){
-            
-
-        });
 
     });
 </script>
@@ -127,6 +164,7 @@
             <select id="sel"></select>
             <input type="text" id="keyword" placeholder="단어입력">
             <div id="scoreBox"></div>
+            <div id="hpBox"></div>
         </div>
         <div id="stage"></div>
     </div>
