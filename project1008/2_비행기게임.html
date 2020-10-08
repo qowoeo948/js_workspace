@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{margin:0px ;}
+    #wrapper{
+        width: 100%;
+        height: 640px;
+        background-image: url("../images/shooting/game_bg.jpg");
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+
+    }
+</style>
+<script src="./2_GameObject.js"></script>
+<script src="./2_Hero.js"></script>
+<script src="./2_Enemy.js"></script>
+<script src="./2_Bullet.js"></script>
+<script>
+    var wrapper;
+    var hero;
+    var bulletArray= new Array(); //총알 담을 배열
+    var bgX=0;
+    function moveBg(){
+        bgX--;
+        wrapper.style.backgroundPosition=bgX+"px 0px";
+    }
+   
+
+    function createHero(){
+        //container,src,width,height,x,y,velX,velY
+        hero = new Hero(wrapper,"../images/shooting/plane.png",90,80,100,100,1,0);
+
+    }
+
+    function createEnemy(){
+        //container,src,width,height,x,y,velX,velY
+        new Enemy(wrapper,"../images/shooting/e1.png",100,65,900,200,0,0);
+        new Enemy(wrapper,"../images/shooting/e1.png",100,65,900,300,0,0);
+        new Enemy(wrapper,"../images/shooting/e1.png",100,65,900,400,0,0);
+        new Enemy(wrapper,"../images/shooting/e1.png",100,65,900,500,0,0);
+
+    }
+
+    function createBullet(){
+     var bullet = new Bullet(wrapper,"../images/shooting/ball.png",25,25,hero.x,hero.y,10,0);
+     bulletArray.push(bullet); //총알추가
+    }
+
+    function move(velX,velY){
+        hero.velX=velX;
+        hero.velY=velY;
+    }
+
+    function gameLoop(){
+        console.log("gameLoop()....");
+        moveBg();
+        hero.tick();
+        hero.render();
+        // createHero();
+
+        for(var i=0;i<=bulletArray.length;i++){
+            bulletArray[i].tick();
+            bulletArray[i].render();
+        }
+
+    }
+
+    function init(){
+        wrapper = document.getElementById("wrapper");
+        //키보드 이벤트 구현하기
+        document.body.addEventListener("keydown",function(e){
+            //spacebar누르면 총알 생성!!
+            switch(e.keyCode){
+                case 32:  createBullet();
+                break;
+                case 37: move(-5,0);
+                break; 
+                case 39: move(5,0);
+                break;
+                case 38: move(0,-5);
+                break;
+                case 40: move(0,5);
+                break;
+            }
+
+        });
+
+        document.body.addEventListener("keyup", function(e){
+            var key=e.keyCode;
+            switch(key){
+                case 37:hero.velX=0;
+                break;
+                case 39:hero.velX=0;
+                break;
+                case 38:hero.velY=0;
+                break;
+                case 40:hero.velY=0;
+                break;
+            }
+        });
+    }
+    //load 이유: 모든 태그마다 1:1대응되는 객체인 .DOM이 메모리에 올라올떄
+    //까지 기다렸다가 실행하기 위해..
+    window.addEventListener("load",function(){
+        init();
+        createHero();
+        createEnemy();
+        setInterval("gameLoop()",10);
+        
+    });
+</script>
+</head>
+<body>
+    <div id="wrapper"></div>
+    
+</body>
+</html>
